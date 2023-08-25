@@ -36,6 +36,54 @@ const Announce = observer(() => {
     );
   };
 
+  const colors = [
+    "#333333",
+    "darkgray",
+    "black",
+    "white",
+    "red",
+    "blue",
+    "deeppink",
+    "dodgerblue",
+    "purple",
+    "seagreen",
+    "palegreen",
+    "tomato",
+    "orange",
+    "green"];
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ size: [] }],
+      [{ font: [] }],
+      [{ align: ["right", "center", "justify"] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ color: colors }],
+      [{ background: colors }]
+    ]
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "color",
+    "image",
+    "background",
+    "align",
+    "size",
+    "font"
+  ];
+
 
   return (
     <div style={{ marginBottom: "4rem" }}>
@@ -53,7 +101,7 @@ const Announce = observer(() => {
           Введите текст объявления, которое появится на странице регистрации:
         </p>
 
-        <ReactQuill className="texteditor" theme="snow" value={announce.name} onChange={(value) => setAnnounce({ ...announce, name: value })} />
+        <ReactQuill className="texteditor" formats={formats} modules={modules} theme="snow" value={announce.name} onChange={(value) => setAnnounce({ ...announce, name: value })} />
 
         <div>
           <Button onClick={() => {
